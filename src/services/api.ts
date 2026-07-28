@@ -1,3 +1,5 @@
+// api.ts => AXIOS INSTANCE WITH INTERCEPTORS
+
 import axios from "axios";
 import type { AxiosError, InternalAxiosRequestConfig} from "axios";
 
