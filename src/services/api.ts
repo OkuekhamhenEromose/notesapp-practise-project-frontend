@@ -8,7 +8,7 @@ const API_BASE_URL = "http://localhost:8000";
  * Axios instance with default configuration.
  * All API requests go through this instance
  */
-export const api = axios.create({
+export const api = axios.create({ // Creates a pre-configured Axios instance. All requests use this base URL automatically
     baseURL: API_BASE_URL,
     headers: {
         "Content-Type": "application/json",
@@ -19,8 +19,8 @@ export const api = axios.create({
  * Request interceptor: Automatically attach JWT token to every request.
  * Runs BEFORE each request is sent.
  */
-api.interceptors.request.use(
-    (config: InternalAxiosRequestConfig) => {
+api.interceptors.request.use( // Request Interceptor: Runs before EVERY request. Automatically attaches the JWT token from localStorage. This means you never manually set headers in individual API calls
+    (config: InternalAxiosRequestConfig) => { // InternalAxiosRequestConfig: TypeScript type for Axios request config (includes headers).
         // Get token from localStorage
         const token = localStorage.getItem("access_token");
 
@@ -40,7 +40,7 @@ api.interceptors.request.use(
  * Response interceptor: Handle common errors globally.
  * Runs AFTER each response is received
  */
-api.interceptors.response.use(
+api.interceptors.response.use( // Response Interceptor: Runs after EVERY response. Handles 401 (unauthorized) globally by clearing the token and redirecting to login
     (response) =>{
         // Successful response - pass it through
         return response;
