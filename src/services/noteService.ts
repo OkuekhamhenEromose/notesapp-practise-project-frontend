@@ -39,6 +39,6 @@ export const updateNote = async (id: number, note: NoteUpdate): Promise<Note> =>
 /**
  * Delete a note
  */
-export const deletNote = async (id: number): Promise<void> => {
+export const deleteNote = async (id: number): Promise<void> => {
     await api.delete(`/notes/${id}`);
 }

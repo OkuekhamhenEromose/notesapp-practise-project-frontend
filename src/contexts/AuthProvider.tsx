@@ -59,7 +59,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       const response = await authService.login(credentials);
       localStorage.setItem("access_token", response.access_token);
       const user = await authService.getCurrentUser();
-      setUser(user)
+      setUser(user);
     } catch (err) {
       setError("Invalid email or password");
       throw err;
