@@ -1,7 +1,7 @@
 // api.ts => AXIOS INSTANCE WITH INTERCEPTORS
 
 import axios from "axios";
-import type { AxiosError, InternalAxiosRequestConfig} from "axios";
+import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 
 //  Base API URL - matches our FastAPI backend
 const API_BASE_URL = "http://localhost:8000";
@@ -32,7 +32,7 @@ api.interceptors.request.use( // Request Interceptor: Runs before EVERY request.
         }
         return config
     },
-    (error) =>{
+    (error) => {
         // Request setup failed (rare)
         return Promise.reject(error)
     }
@@ -43,13 +43,13 @@ api.interceptors.request.use( // Request Interceptor: Runs before EVERY request.
  * Runs AFTER each response is received
  */
 api.interceptors.response.use( // Response Interceptor: Runs after EVERY response. Handles 401 (unauthorized) globally by clearing the token and redirecting to login
-    (response) =>{
+    (response) => {
         // Successful response - pass it through
         return response;
     },
-    (error: AxiosError) =>{
+    (error: AxiosError) => {
         // Handle specific error status codes
-        if (error.response?.status === 401){
+        if (error.response?.status === 401) {
             // Token expired or invalid - clear auth and reload
             localStorage.removeItem("access_token");
             window.location.href = "/login"
