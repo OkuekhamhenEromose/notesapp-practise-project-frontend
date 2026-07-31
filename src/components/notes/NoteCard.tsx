@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import type { Note, NoteCreate } from "../../types";
 import { NoteForm } from "./NoteForm";
 import { Button } from "../ui/Button";
-// import { updateNote } from "../../services/noteService";
 
 interface NoteCardProps {
   note: Note;
@@ -32,7 +31,8 @@ export const NoteCard: React.FC<NoteCardProps> = ({
     }
   };
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", { // Date formatting: toLocaleDateString converts ISO strings to readable local dates
+    return new Date(dateString).toLocaleDateString("en-US", {
+      // Date formatting: toLocaleDateString converts ISO strings to readable local dates
       year: "numeric",
       month: "short",
       day: "numeric",
