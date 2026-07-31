@@ -22,7 +22,7 @@ interface NoteListProps {
   isLoading: boolean;
 }
 
-export const NotList: React.FC<NoteListProps> = ({
+export const NoteList: React.FC<NoteListProps> = ({
   notes,
   pagination, // Pagination UI: Only shows if there's more than one page. Disables Previous on page 1, Next on last page
   onPageChange,
