@@ -7,8 +7,8 @@ import "./index.css";
 
 // createRoot: React 18's new rendering API. The ! tells TypeScript that document.getElementById("root") is not null.
 ReactDOM.createRoot(document.getElementById("root")!).render( 
-  <React.StrictMode> // React.StrictMode: Development-only checks for common mistakes deprecated APIs, side effects, etc. Renders components twice to detect impure renders.
-    <AuthProvider> // AuthProvider: Wraps the entire app so any component can access auth state.
+  <React.StrictMode>
+    <AuthProvider>
       <App />
     </AuthProvider>
   </React.StrictMode>

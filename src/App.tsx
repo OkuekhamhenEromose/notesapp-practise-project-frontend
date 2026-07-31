@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
 import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage"
 import { DashboardPage } from "./pages/DashboardPage";
 
 /**
@@ -63,7 +64,7 @@ export const App: React.FC = () => {
           path="/register"
           element={
             <PublicRoute>
-              <LoginPage /> {/* Reuse login page with register form */}
+              <RegisterPage /> {/* Reuse login page with register form */}
             </PublicRoute>
           }
         />
