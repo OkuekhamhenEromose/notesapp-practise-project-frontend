@@ -8,7 +8,7 @@ import { DashboardPage } from "./pages/DashboardPage";
 /**
  * ProtectedRoute: Redirects to login if user is not authenticated.
  */
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => { // ProtectedRoute: Wraps pages that require authentication. Checks auth state, shows loading spinner, or redirects to login.
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
@@ -29,7 +29,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 /**
  * PublicRoute: Redirects to dashboard if already authenticated.
  */
-const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => { // PublicRoute: Opposite — redirects authenticated users away from login/register pages
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
@@ -41,7 +41,7 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }
 
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />; // <Navigate to="..." replace />: Programmatic navigation. replace replaces the current history entry (prevents back-button issues).
   }
 
   return <>{children}</>;
