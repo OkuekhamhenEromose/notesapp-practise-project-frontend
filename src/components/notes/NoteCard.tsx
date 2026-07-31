@@ -28,11 +28,11 @@ export const NoteCard: React.FC<NoteCardProps> = ({
   };
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this note?")) {
-      await onDelete(note.id);
+      await onDelete(note.id); // window.confirm: Native browser confirmation dialog. In production, you'd use a custom modal component.
     }
   };
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString("en-US", { // Date formatting: toLocaleDateString converts ISO strings to readable local dates
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -45,7 +45,7 @@ export const NoteCard: React.FC<NoteCardProps> = ({
       <NoteForm
         initialNote={note}
         onSubmit={handleUpdate}
-        onCancel={() => setIsEditing(false)}
+        onCancel={() => setIsEditing(false)} // Inline editing: Clicking "Edit" replaces the card with the NoteForm component. This is cleaner than a modal for this MVP
         isLoading={isLoading}
       />
     );
