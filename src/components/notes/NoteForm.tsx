@@ -1,18 +1,18 @@
 // src/components/note/NoteForm.tsx
 import React, { useState } from "react";
-import type { Note, NoteCreate, NoteUpdate } from "../../types";
+import type { Note, NoteCreate } from "../../types";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 
 interface NoteFormProps {
   initialNote?: Note;
-  onSubmit: (note: NoteCreate | NoteUpdate) => Promise<void>;
+  onSubmit: (note: NoteCreate) => Promise<void>;
   onCancel?: () => void;
   isLoading: boolean;
 }
 
 export const NoteForm: React.FC<NoteFormProps> = ({
-  initialNote,
+  initialNote, // Reusable for create and edit: If initialNote is provided, it's edit mode. Otherwise, create mode
   onSubmit,
   onCancel,
   isLoading,
